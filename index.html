@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Strum Studio — школа гитары</title>
+  <meta name="description" content="Strum Studio — уроки гитары для всех. Курсы, преподаватели, записи и поддержка." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-light:#f7f8fb; --text-light:#111827; --muted-light:#55607a; --accent:#ff6b35;
+      --bg-dark:#071022; --text-dark:#e6eef8; --muted-dark:#9fb0c8;
+      --radius:12px; --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:"Inter",system-ui,Segoe UI,Roboto,Arial;
+      background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; line-height:1.45;
+    }
+
+    /* theme (light by default) */
+    body[data-theme="light"]{
+      --bg:var(--bg-light); --text:var(--text-light); --muted:var(--muted-light);
+    }
+    body[data-theme="dark"]{
+      --bg:var(--bg-dark); --text:var(--text-dark); --muted:var(--muted-dark);
+    }
+
+    .container{max-width:var(--maxw); margin:28px auto; padding:20px;}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+    .brand{display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit}
+    .logo{
+      width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,107,53,0.04));
+      color:var(--accent); font-weight:800; font-size:20px;
+      border:1px solid rgba(0,0,0,0.06);
+    }
+    nav{display:flex; gap:10px; align-items:center}
+    nav a{color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:600}
+    nav a:hover{background:rgba(0,0,0,0.04); color:var(--text)}
+
+    .hero{
+      display:grid; grid-template-columns:1fr 360px; gap:20px; align-items:center; margin-top:16px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      padding:20px; border-radius:var(--radius); border:1px solid rgba(0,0,0,0.06);
+    }
+    h1{margin:0 0 8px 0; font-size:28px}
+    .subtitle{color:var(--muted); margin-bottom:12px}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; cursor:pointer; border:0; font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent), #ff9e6b); color:white}
+    .btn-outline{background:transparent; border:1px solid rgba(0,0,0,0.06); color:var(--muted)}
+
+    /* sections */
+    section{margin-top:18px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .course{padding:14px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(0,0,0,0.04)}
+    .teacher{display:flex; gap:12px; align-items:center}
+    .avatar{width:62px; height:62px; border-radius:12px; background:linear-gradient(135deg,#e6eef8,#d6e7ff); display:flex;align-items:center;justify-content:center; font-weight:700}
+
+    .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+    .gallery img{width:100%; height:120px; object-fit:cover; border-radius:8px; cursor:pointer}
+
+    footer{margin-top:20px; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:14px}
+
+    /* responsive */
+    @media (max-width:980px){ .hero{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} .gallery{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:560px){ .grid-3{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} header{flex-direction:column; align-items:flex-start} nav{flex-wrap:wrap} }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:800">Strum Studio</div>
+          <div style="color:var(--muted); font-size:13px">Школа гитары • Онлайн и офлайн</div>
+        </div>
+      </a>
+
+      <nav aria-label="Навигация">
+        <a href="#about">О школе</a>
+        <a href="#courses">Курсы</a>
+        <a href="#teachers">Преподаватели</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contact">Контакты</a>
+        <button id="themeToggle" class="btn btn-outline" style="margin-left:8px">Светлая тема</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h1>Учись играть на гитаре в Strum Studio</h1>
+          <p class="subtitle">От нуля до уверенного исполнения: персональные уроки, курсы и практические занятия.</p>
+
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на пробный урок</button>
+            <button class="btn btn-outline" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">Посмотреть курсы</button>
+          </div>
+
+          <div style="margin-top:16px; display:flex; gap:14px; color:var(--muted)">
+            <div><strong>45+</strong><div style="font-size:13px">уроков</div></div>
+            <div><strong>8</strong><div style="font-size:13px">курс</div></div>
+            <div><strong>300+</strong><div style="font-size:13px">учеников</div></div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">Быстрый старт</h3>
+          <p class="subtitle">Если ты новичок — начни с курса «Основы» и 10 минут практики в день.</p>
+          <ul style="padding-left:18px; color:var(--muted)">
+            <li>Настройка инструмента</li>
+            <li>Первые аккорды</li>
+            <li>Простые песни</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- О школе -->
+      <section id="about" class="card">
+        <h2>О школе</h2>
+        <p class="subtitle">Strum Studio — это школа, где мы соединяем структуру уроков и любовь к музыке. Подходит и для детей, и для взрослых, и для тех, кто хочет играть в группе.</p>
+      </section>
+
+      <!-- Курсы -->
+      <section id="courses" class="card">
+        <h2>Курсы</h2>
+        <div class="grid-3" style="margin-top:12px">
+          <div class="course">
+            <h3>Основы (4 недели)</h3>
+            <p class="muted">Базовые аккорды, простые ритмы, 2–3 песни в конце курса.</p>
+            <div style="margin-top:8px"><strong>Цена:</strong> 12 000 ₸</div>
+          </div>
+          <div class="course">
+            <h3>Развитие (6 недель)</h3>
+            <p class="muted">Арпеджио, альтернативные басы, ввод в табулатуру.</p>
+            <div style="margin-top:8px"><strong>Цена:</strong> 18 000 ₸</div>
+          </div>
+          <div class="course">
+            <h3>Электрогитара</h3>
+            <p class="muted">Риффы, техника игры медиатором, эффекты и усилители.</p>
+            <div style="margin-top:8px"><strong>Цена:</strong> 16 000 ₸</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Преподаватели -->
+      <section id="teachers" class="card">
+        <h2>Преподаватели</h2>
+        <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;">
+          <div class="teacher card" style="min-width:260px;">
+            <div class="avatar">AK</div>
+            <div>
+              <div style="font-weight:700">Алексей К.</div>
+              <div class="muted">Классическая и акустическая гитара, 10 лет опыта</div>
+            </div>
+          </div>
+
+          <div class="teacher card" style="min-width:260px;">
+            <div class="avatar">MS</div>
+            <div>
+              <div style="font-weight:700">Мадина С.</div>
+              <div class="muted">Электрогитара, блюз/рок, студийные записи</div>
+            </div>
+          </div>
+
+          <div class="teacher card" style="min-width:260px;">
+            <div class="avatar">EZ</div>
+            <div>
+              <div style="font-weight:700">Ербол З.</div>
+              <div class="muted">Авторские аранжировки и обучение композиции</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Галерея -->
+      <section id="gallery" class="card">
+        <h2>Галерея</h2>
+        <div class="gallery" style="margin-top:12px;">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop" alt="g1" onclick="openModal(this.src)">
+          <img src="https://images.unsplash.com/photo-1519996520533-0a7d7a5f3d8b?q=80&w=800&auto=format&fit=crop" alt="g2" onclick="openModal(this.src)">
+          <img src="https://images.unsplash.com/photo-1506152983158-9b9a0d3a4a0d?q=80&w=800&auto=format&fit=crop" alt="g3" onclick="openModal(this.src)">
+          <img src="https://images.unsplash.com/photo-1526178612098-8e6d4f6b4b56?q=80&w=800&auto=format&fit=crop" alt="g4" onclick="openModal(this.src)">
+        </div>
+      </section>
+
+      <!-- Контакты -->
+      <section id="contact" class="card">
+        <h2>Контакты</h2>
+        <p class="muted">Напиши нам или позвони — ответим в ближайшее время.</p>
+
+        <form onsubmit="sendForm(event)" style="margin-top:12px; display:grid; gap:10px; max-width:720px">
+          <div style="display:flex; gap:10px;">
+            <input id="name" placeholder="Имя" required style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
+            <input id="phone" placeholder="Телефон или email" required style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06)">
+          </div>
+          <textarea id="msg" rows="4" placeholder="Сообщение" required style="padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06)"></textarea>
+          <div style="display:flex; gap:8px; justify-content:flex-end">
+            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="button" class="btn btn-outline" onclick="document.querySelector('form').reset()">Очистить</button>
+          </div>
+          <div id="formFeedback" style="color:var(--muted); font-size:14px"></div>
+        </form>
+
+        <div style="margin-top:14px; color:var(--muted)">
+          <div>📧 support@strumstudio.kz</div>
+          <div>📞 +7 (705) 234-56-78</div>
+          <div>Telegram / WhatsApp: @StrumStudio</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Strum Studio</div>
+      <div style="color:var(--muted)">Сделано с музыкой 🎶</div>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(2,6,23,0.7); align-items:center; justify-content:center; z-index:1200">
+    <img id="modalImg" src="" alt="preview" style="max-width:92%; max-height:85%; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.6)">
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    function setTheme(t){
+      document.body.setAttribute('data-theme', t);
+      themeBtn.textContent = t === 'light' ? 'Тёмная тема' : 'Светлая тема';
+    }
+    // initial
+    setTheme('dark');
+    themeBtn.addEventListener('click', ()=>{
+      const cur = document.body.getAttribute('data-theme');
+      setTheme(cur === 'dark' ? 'light' : 'dark');
+    });
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // modal gallery
+    function openModal(src){
+      const m = document.getElementById('modal');
+      document.getElementById('modalImg').src = src;
+      m.style.display = 'flex';
+    }
+    document.getElementById('modal').addEventListener('click', ()=>{ document.getElementById('modal').style.display = 'none'; });
+
+    // form (demo)
+    function sendForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const fb = document.getElementById('formFeedback');
+      if(!name || !phone || !msg){ fb.textContent = 'Заполните все поля.'; return; }
+      fb.textContent = 'Спасибо! Ваше сообщение получено (демо).';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
+
